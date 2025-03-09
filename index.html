@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Calendar</title>
+    <style>
+        /* import font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background: url('https://i.imgur.com/TWCQZ6g.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Calendar container */
+        .calendar-container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hidden radio buttons */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Month tabs */
+        .month-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .month-tabs label {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .month-tabs label:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Table container */
+        .month {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Show selected month */
+        #jan:checked ~ .jan,
+        #feb:checked ~ .feb,
+        #mar:checked ~ .mar,
+        #apr:checked ~ .apr,
+        #may:checked ~ .may,
+        #jun:checked ~ .jun,
+        #jul:checked ~ .jul,
+        #aug:checked ~ .aug,
+        #sep:checked ~ .sep,
+        #oct:checked ~ .oct,
+        #nov:checked ~ .nov,
+        #dec:checked ~ .dec {
+            display: block;
+        }
+
+        /* Calendar table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        td {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Style weekends */
+        td:nth-child(1), td:nth-child(7) {
+            background: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+
+td:hover {
+    background: #c352e0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* hover effect sa month tabs */
+.month-tabs label:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .month-tabs label {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            th, td {
+                padding: 5px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>2025 Calendar</h1>
+
+    <div class="calendar-container">
+        <input type="radio" name="month" id="jan" checked>
+        <input type="radio" name="month" id="feb">
+        <input type="radio" name="month" id="mar">
+        <input type="radio" name="month" id="apr">
+        <input type="radio" name="month" id="may">
+        <input type="radio" name="month" id="jun">
+        <input type="radio" name="month" id="jul">
+        <input type="radio" name="month" id="aug">
+        <input type="radio" name="month" id="sep">
+        <input type="radio" name="month" id="oct">
+        <input type="radio" name="month" id="nov">
+        <input type="radio" name="month" id="dec">
+
+        <div class="month-tabs">
+            <label for="jan">January</label>
+            <label for="feb">February</label>
+            <label for="mar">March</label>
+            <label for="apr">April</label>
+            <label for="may">May</label>
+            <label for="jun">June</label>
+            <label for="jul">July</label>
+            <label for="aug">August</label>
+            <label for="sep">September</label>
+            <label for="oct">October</label>
+            <label for="nov">November</label>
+            <label for="dec">December</label>
+        </div>
+
+        <div class="month jan">
+            <h2>January 2025</h2>
+            <table>
+                <tr>
+                    <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+                </tr>
+                <tr>
+                    <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+                </tr>
+                <tr>
+                    <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+                </tr>
+                <tr>
+                    <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+                </tr>
+                <tr>
+                    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
+                </tr>
+            </table>
+            </div>
+            <!-- February -->
+<div class="month feb">
+    <h2>February 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td>1</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+        </tr>
+        <tr>
+            <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+        </tr>
+        <tr>
+            <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+        </tr>
+        <tr>
+            <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- March -->
+<div class="month mar">
+    <h2>March 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td>1</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+        </tr>
+        <tr>
+            <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+        </tr>
+        <tr>
+            <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+        </tr>
+        <tr>
+            <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+        </tr>
+        <tr>
+            <td>30</td><td>31</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- April -->
+<div class="month apr">
+    <h2>April 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+        </tr>
+        <tr>
+            <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+        </tr>
+        <tr>
+            <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+        </tr>
+        <tr>
+            <td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+<!-- May -->
+<div class="month may">
+    <h2>May 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+        </tr>
+        <tr>
+            <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+        <tr>
+            <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+        </tr>
+        <tr>
+            <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+        </tr>
+        <tr>
+            <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+        </tr>
+    </table>
+</div>
+
+<!-- June -->
+<div class="month jun">
+    <h2>June 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+        </tr>
+        <tr>
+            <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+        </tr>
+        <tr>
+            <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+        </tr>
+        <tr>
+            <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+        </tr>
+        <tr>
+            <td>29</td><td>30</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- July -->
+<div class="month jul">
+    <h2>July 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+        </tr>
+        <tr>
+            <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+        </tr>
+        <tr>
+            <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+        </tr>
+        <tr>
+            <td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- August to December -->
+<div class="month aug">
+    <h2>August 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td>
+        </tr>
+        <tr>
+            <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+        </tr>
+        <tr>
+            <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+        </tr>
+        <tr>
+            <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+        </tr>
+        <tr>
+            <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+        </tr>
+        <tr>
+            <td>31</td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+<!-- September -->
+<div class="month sep">
+    <h2>September 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+        </tr>
+        <tr>
+            <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+        </tr>
+        <tr>
+            <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+        </tr>
+        <tr>
+            <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+        </tr>
+        <tr>
+            <td>28</td><td>29</td><td>30</td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- October -->
+<div class="month oct">
+    <h2>October 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+        </tr>
+        <tr>
+            <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+        </tr>
+        <tr>
+            <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+        </tr>
+        <tr>
+            <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+        </tr>
+        <tr>
+            <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- November -->
+<div class="month nov">
+    <h2>November 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td>1</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+        </tr>
+        <tr>
+            <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+        </tr>
+        <tr>
+            <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+        </tr>
+        <tr>
+            <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+        </tr>
+        <tr>
+            <td>30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+
+<!-- December -->
+<div class="month dec">
+    <h2>December 2025</h2>
+    <table>
+        <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+        </tr>
+        <tr>
+            <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+        </tr>
+        <tr>
+            <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+        </tr>
+        <tr>
+            <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+        </tr>
+        <tr>
+            <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+        </tr>
+        <tr>
+            <td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td>
+        </tr>
+    </table>
+</div>
+<!-- diri ra kutob -->
+        </div>
+        <!-- paras auto² -->
+        <!-- Styling buttons -->
+<div class="mark-options">
+    <button onclick="markSelected('holiday')">Mark Holiday</button>
+    <button onclick="markSelected('today')">Mark Today</button>
+    <button onclick="clearMarks()">Clear Marks</button>
+</div>
+
+<style>
+    .mark-options {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .mark-options button {
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 5px;
+        transition: 0.3s;
+        background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .mark-options button:hover {
+        opacity: 0.8;
+    }
+
+    .holiday { background: #f66262 !important; color: white; }
+    .today { background: #88d2f9 !important; }
+</style>
+
+<script>
+    let selectedCell = null;
+
+    document.querySelectorAll("td").forEach(td => {
+        td.addEventListener("click", function () {
+            if (selectedCell) selectedCell.classList.remove("selected");
+            selectedCell = this;
+            selectedCell.classList.add("selected");
+        });
+    });
+
+    function markSelected(type) {
+        if (!selectedCell) return;
+        if (type === "holiday") {
+            selectedCell.classList.add("holiday");
+        } else if (type === "today") {
+            selectedCell.classList.add("today");
+        }
+    }
+function clearMarks() {
+    // find the currently selected month using the checked radio input
+    const selectedRadio = document.querySelector('input[name="month"]:checked');
+    
+    if (selectedRadio) {
+        // get the corresponding month class (e.g., "jan", "feb")
+        const selectedMonthClass = selectedRadio.id;
+        
+        // find the matching month container
+        const selectedMonthDiv = document.querySelector(`.${selectedMonthClass}`);
+        
+        if (selectedMonthDiv) {
+            // clear only marks within the selected month
+            selectedMonthDiv.querySelectorAll(".holiday, .today").forEach(td => {
+                td.classList.remove("holiday", "today");
+            });
+        }
+    }
+}
+    
+</script>
+</body>
+</html>
